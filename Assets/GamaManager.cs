@@ -6,6 +6,8 @@ public class GamaManager : MonoBehaviour
 {
     // Start is called before the first frame update
     [field:SerializeField] public int DimensionIndex {  get; set; }
+    [field: SerializeField] public int Score { get; set; }
+    [field: SerializeField] public int Collectible { get; set; }
     public static GamaManager instance;
     void Awake()
     {
