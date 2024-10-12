@@ -794,6 +794,7 @@ MonoBehaviour:
   - {fileID: 1511408559}
   - {fileID: 2028229427}
   - {fileID: 1485899621}
+  sceneName: 2.5D
 --- !u!1 &1601029229
 GameObject:
   m_ObjectHideFlags: 0
@@ -1326,6 +1327,8 @@ MonoBehaviour:
   _maxZ: 5
   _minbz: -3.4
   _lifeCounter: {fileID: 1560614975}
+  _aiRight: 0
+  _aiLeft: 0
 --- !u!65 &2077705196
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Net;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 
 public class LifeCounter : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] private List<GameObject> heartObjects = new List<GameObject>();
+    [SerializeField] private string sceneName;
     void Start()
     {
         
@@ -30,6 +32,6 @@ public class LifeCounter : MonoBehaviour
     }
     private void GameOver()
     {
-
+        SceneManager.LoadScene(sceneName);
     }
 }
