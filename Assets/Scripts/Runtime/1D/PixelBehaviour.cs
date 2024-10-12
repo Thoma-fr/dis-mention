@@ -39,25 +39,24 @@ public class PixelBehaviour : MonoBehaviour
             }
         }
 
-
         if (_pixelState == PixelState.PLAYER)
         {
-            PlayerMovement(Vector3.right, 1);
             if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.A))
-                _rb2D.MovePosition(new Vector3(transform.position.x - 1, 0, 0));
+                PlayerMovement(-1);
             else if (Input.GetKeyDown(KeyCode.D))
-                _rb2D.MovePosition(new Vector3(transform.position.x + 1, 0, 0));
+                PlayerMovement(1);
             else if (Input.GetKeyDown(KeyCode.Space))
-                _rb2D.MovePosition(new Vector3(transform.position.x + 2, 0, 0));
+                PlayerMovement(2);
         }
     }
 
-    private void PlayerMovement(Vector3 dir, int dist)
+    private void PlayerMovement(int nextPos)
     {
-        if (Physics2D.Raycast(transform.position + dir, dir, dist))
-        {
-            Debug.Log("rrrr");
-        }
+        if (PixelManager.Instance.IsThereWall(_pixelPos + nextPos) || _pixelPos + nextPos < 0)
+            return;
+            
+        _rb2D.MovePosition(new Vector3(transform.position.x + nextPos, 0, 0));
+        _pixelPos += nextPos;
     }
 
     public void UpdateBehaviour(PixelState newState, Action triggeredAction = null)

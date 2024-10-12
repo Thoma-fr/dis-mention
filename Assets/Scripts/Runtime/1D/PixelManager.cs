@@ -6,13 +6,32 @@ using UnityEngine.Pool;
 
 public class PixelManager : MonoBehaviour
 {
+    public static PixelManager Instance;
+
+    [Header("Camera")] 
+    [SerializeField] private Transform _firstCamPoint;
+    [SerializeField] private Transform _secondCamPoint;
+
+    [Header("Level")]
     [SerializeField] private List<LevelData> levelList = new List<LevelData>();
     private int _levelId = 0;
-    
+    private Vector3 _firstPos = new Vector3(-5, 0, 0);
+
+    [Header("Pixel")]
     private GameObject _pixelPrefab;
     private ObjectPool<PixelBehaviour> _pixelPool;
 
+    [Header("In Game")]
     private List<PixelBehaviour> _actualPixelUse = new List<PixelBehaviour>();
+    private List<int> _pixelWallPos = new List<int>();
+
+    private void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(gameObject);
+    }
 
     private void Start()
     {
@@ -31,11 +50,14 @@ public class PixelManager : MonoBehaviour
         if(levelData.maxSize < 0)
             return;
 
+        _firstCamPoint.position = _firstPos;
+        _secondCamPoint.position = _firstPos + new Vector3(levelData.maxSize, 0, 0);
+
         //Terrain
         for (int i = 0; i < levelData.maxSize; i++)
         {
             PixelBehaviour pixel = _pixelPool.Get();
-            pixel.transform.position = new Vector3(-5 + i * 1, 0, 0);
+            pixel.transform.position = _firstPos + new Vector3(i * 1, 0, 0);
             pixel.UpdateBehaviour(PixelState.NOTHING);
 
             _actualPixelUse.Add(pixel);
@@ -49,9 +71,12 @@ public class PixelManager : MonoBehaviour
                 continue;
 
             PixelBehaviour pixel = _pixelPool.Get();
-            pixel.transform.position = new Vector3(-5 + specialPixelList[i].posIndex * 1, 0, 0);
+            pixel.transform.position = _firstPos + new Vector3(specialPixelList[i].posIndex * 1, 0, 0);
             pixel.PixelPos = specialPixelList[i].posIndex;
-            pixel.UpdateBehaviour(specialPixelList[i].State, GetPixelAction(specialPixelList[i].State));
+            pixel.UpdateBehaviour(specialPixelList[i].pixelState, GetPixelAction(specialPixelList[i].pixelState));
+
+            if(specialPixelList[i].pixelState == PixelState.WALL)
+                _pixelWallPos.Add(specialPixelList[i].posIndex);
 
             _actualPixelUse.Add(pixel);
         }
@@ -70,6 +95,11 @@ public class PixelManager : MonoBehaviour
         return null;
     }
 
+    public bool IsThereWall(int nextPos)
+    {
+        return _pixelWallPos.Contains(nextPos);
+    }
+
     private void DestroyLevel()
     {
         for (int i = 0; i < _actualPixelUse.Count; i++)
@@ -77,6 +107,7 @@ public class PixelManager : MonoBehaviour
             _pixelPool.Release(_actualPixelUse[i]);
         }
 
+        _pixelWallPos.Clear();
         _actualPixelUse.Clear();
     }
 
@@ -123,7 +154,7 @@ public struct PixelColor
 public struct PixelPos
 {
     public int posIndex;
-    public PixelState State;
+    public PixelState pixelState;
 }
 
 [Serializable]
