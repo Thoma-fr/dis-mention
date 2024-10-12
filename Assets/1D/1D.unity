@@ -508,19 +508,73 @@ MonoBehaviour:
       pixelState: 1
     - posIndex: 5
       pixelState: 2
+    - posIndex: 10
+      pixelState: 2
+    - posIndex: 15
+      pixelState: 4
+  - maxSize: 16
+    specialPixelList:
+    - posIndex: 0
+      pixelState: 1
+    - posIndex: 8
+      pixelState: 3
     - posIndex: 14
       pixelState: 3
     - posIndex: 15
+      pixelState: 4
+  - maxSize: 16
+    specialPixelList:
+    - posIndex: 0
+      pixelState: 1
+    - posIndex: 7
+      pixelState: 2
+    - posIndex: 12
+      pixelState: 3
+    - posIndex: 15
+      pixelState: 4
+  - maxSize: 24
+    specialPixelList:
+    - posIndex: 0
+      pixelState: 1
+    - posIndex: 7
+      pixelState: 3
+    - posIndex: 11
+      pixelState: 2
+    - posIndex: 15
+      pixelState: 2
+    - posIndex: 21
+      pixelState: 3
+    - posIndex: 23
+      pixelState: 4
+  - maxSize: 24
+    specialPixelList:
+    - posIndex: 0
+      pixelState: 1
+    - posIndex: 10
+      pixelState: 3
+    - posIndex: 14
+      pixelState: 3
+    - posIndex: 18
+      pixelState: 3
+    - posIndex: 22
+      pixelState: 3
+    - posIndex: 23
       pixelState: 4
   - maxSize: 32
     specialPixelList:
     - posIndex: 0
       pixelState: 1
-    - posIndex: 5
+    - posIndex: 7
       pixelState: 2
-    - posIndex: 14
+    - posIndex: 21
       pixelState: 3
-    - posIndex: 15
+    - posIndex: 24
+      pixelState: 3
+    - posIndex: 27
+      pixelState: 3
+    - posIndex: 30
+      pixelState: 3
+    - posIndex: 31
       pixelState: 4
 --- !u!4 &1159525571
 Transform:
