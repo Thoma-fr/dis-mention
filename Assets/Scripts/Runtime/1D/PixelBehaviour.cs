@@ -36,6 +36,7 @@ public class PixelBehaviour : MonoBehaviour
             {
                 _timer = 0;
                 _rb2D.MovePosition(new Vector3(transform.position.x - 1, 0, 0));
+                _pixelPos--;
             }
         }
 
@@ -95,6 +96,9 @@ public class PixelBehaviour : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if(_pixelState == PixelState.ENEMY && PixelManager.Instance.IsThereWall(_pixelPos))
+            return;
+
         if(OntriggerEnterAction != null)
             OntriggerEnterAction.Invoke();
     }
