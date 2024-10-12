@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Snake : MonoBehaviour
 {
@@ -218,5 +220,12 @@ public class Snake : MonoBehaviour
         if (!collision.CompareTag("2DWall")) return;
         m_isDead = true;
         Debug.Log("GAME OVER");
+        StartCoroutine(RechargeLevel());
+    }
+
+    private IEnumerator RechargeLevel()
+    {
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
