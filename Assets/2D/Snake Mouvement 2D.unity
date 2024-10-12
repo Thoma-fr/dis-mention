@@ -784,14 +784,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Snake Head
       objectReference: {fileID: 0}
-    - target: {fileID: 6790797011273887769, guid: 63f31b57cfc1e3f4a9fa7672552cfb9f, type: 3}
-      propertyPath: moveSpeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6790797011273887769, guid: 63f31b57cfc1e3f4a9fa7672552cfb9f, type: 3}
-      propertyPath: m_collectableSpeedBoost
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7939132666262957181, guid: 63f31b57cfc1e3f4a9fa7672552cfb9f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
