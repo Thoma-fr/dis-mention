@@ -24,6 +24,12 @@ public class Snake : MonoBehaviour
 
     [SerializeField, Tooltip("Endroit de spawn du corps")]
     private Transform m_snakeSpawnBody;
+
+    [SerializeField, Tooltip("mort du snake")]
+    private bool m_isDead;
+
+    [SerializeField, Tooltip("Vitesse en plus apres collectable")]
+    private float m_collectableSpeedBoost = 1f;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +40,7 @@ public class Snake : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (m_isDead) return;
         //input
         if(Input.GetKeyDown(KeyCode.LeftArrow))
         {
@@ -67,5 +74,21 @@ public class Snake : MonoBehaviour
             //verifier la collision avant de spawn un nouveau body
             Instantiate(m_snakeBody, m_snakeSpawnBody.position, this.transform.rotation);
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //collectable
+        if(collision.CompareTag("Collectable"))
+        {
+            //incremente score etc
+            if(GamaManager.instance != null) GamaManager.instance.Score += 10;
+            moveSpeed += m_collectableSpeedBoost;
+            collision.gameObject.SetActive(false);
+        }
+        //mort
+        if (!collision.CompareTag("2DWall")) return;
+        m_isDead = true;
+        Debug.Log("GAME OVER");
     }
 }
