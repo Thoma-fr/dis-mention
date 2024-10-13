@@ -4,15 +4,15 @@ using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
 [System.Serializable]
-public struct RenderFeatureToggle
+public struct RenderToggle
 {
     public ScriptableRendererFeature feature;
     public bool isEnabled;
 }
 
-public class thridminigamecollectible : MonoBehaviour
+public class ToggleRenderFeature : MonoBehaviour
 {
-     [SerializeField]
+      [SerializeField]
     private List<RenderFeatureToggle> renderFeatures = new List<RenderFeatureToggle>();
     [SerializeField]
     private UniversalRenderPipelineAsset pipelineAsset;
