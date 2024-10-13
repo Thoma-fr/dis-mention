@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class GamaManager : MonoBehaviour
 {
-    // Start is called before the first frame update
     [field:SerializeField] public int DimensionIndex {  get; set; }
     [field: SerializeField] public int Score { get; set; }
     [field: SerializeField] public int Collectible { get; set; }
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private AudioClip _audioClipText;
     public static GamaManager instance;
+    
     void Awake()
     {
         if(instance == null)
@@ -19,13 +19,10 @@ public class GamaManager : MonoBehaviour
             Destroy(instance);
         DontDestroyOnLoad(gameObject);
     }
+
     public void PlayTextSFX()
     {
-        _audioSource.PlayOneShot(_audioClipText);
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if(_audioSource != null && _audioClipText != null)
+            _audioSource.PlayOneShot(_audioClipText);
     }
 }
