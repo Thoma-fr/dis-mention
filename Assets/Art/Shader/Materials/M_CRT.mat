@@ -8,8 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: M_CRT
-  m_Shader: {fileID: -6465566751694194690, guid: 15add232470e95b429a25c5fa621fbc3,
-    type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 15add232470e95b429a25c5fa621fbc3, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -39,8 +38,8 @@ Material:
     m_Ints: []
     m_Floats:
     - _Blur_Offset: 0.00154
-    - _NumberScanLine: 200
+    - _NumberScanLine: 150
     - _Scan_Lines_Speed: -0.0032
     m_Colors:
-    - _Color: {r: 1.888086, g: 1.888086, b: 1.888086, a: 0}
+    - _Color: {r: 1.7954348, g: 2.469294, b: 2.520743, a: 0}
   m_BuildTextureStacks: []
