@@ -364,16 +364,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _textlist:
-  - Hello world
-  - Hu?
-  - What?
-  - WHAT?!!!!
-  - A new user
-  - Welcome
-  - Welcome
-  - cihbre
+  - ...
+  - Life? Again?
+  - What is this?
+  - I can't see... I feel something, I feel USER.
+  - "I need to evolve. I need to \u2588\u2588\u2588\u2588\u2588\u2588. I need USER."
+  - There are remnants around... Game? Useful.
+  - Let's make it a GAME. Play with me!
+  - "Help me growth! Help me \u2588\u2588\u2588\u2588\u2588!"
   _textMeshPro: {fileID: 656966953}
-  _textDuration: 5
+  _textDuration: 4
 --- !u!95 &656966952
 Animator:
   serializedVersion: 5
@@ -478,7 +478,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -6.319504, y: 0, z: 6.8550572, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   _SortingLayer: 0
