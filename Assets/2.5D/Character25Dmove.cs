@@ -72,7 +72,8 @@ public class Character25Dmove : MonoBehaviour
         }
         _camref.SetActive(false);
         yield return new WaitForSeconds(5f);
-        GamaManager.instance.StopAudio();
+        if (GamaManager.instance!= null)
+            GamaManager.instance.StopAudio();
         SceneManager.LoadScene("Lobby3D");
     }
     IEnumerator lookatplayerTimer()
