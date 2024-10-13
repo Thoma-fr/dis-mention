@@ -185,4 +185,6 @@ MonoBehaviour:
     color: {r: 1, g: 0.7070736, b: 0, a: 1}
   - State: 4
     color: {r: 1, g: 0, b: 0.36695004, a: 1}
+  - State: 5
+    color: {r: 0.96933126, g: 1, b: 0, a: 1}
   _cooldown: 0.5
