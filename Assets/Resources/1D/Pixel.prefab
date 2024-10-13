@@ -176,15 +176,15 @@ MonoBehaviour:
   _rb2D: {fileID: 1381408369108246048}
   pixelColors:
   - State: 0
-    color: {r: 0.6603774, g: 0.6603774, b: 0.6603774, a: 1}
+    color: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
   - State: 1
-    color: {r: 0, g: 1, b: 0.3598187, a: 1}
+    color: {r: 1, g: 1, b: 1, a: 1}
   - State: 2
-    color: {r: 0, g: 1, b: 0.99030876, a: 1}
+    color: {r: 0.0997389, g: 0.17536275, b: 0.2578616, a: 1}
   - State: 3
-    color: {r: 1, g: 0.7070736, b: 0, a: 1}
+    color: {r: 0.91823894, g: 0.2664237, b: 0.07796354, a: 1}
   - State: 4
-    color: {r: 1, g: 0, b: 0.36695004, a: 1}
+    color: {r: 0.16564354, g: 1, b: 0.1415093, a: 1}
   - State: 5
     color: {r: 0.96933126, g: 1, b: 0, a: 1}
   _cooldown: 0.5
