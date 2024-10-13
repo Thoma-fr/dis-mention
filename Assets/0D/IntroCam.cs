@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,6 +9,7 @@ public class IntroCam : MonoBehaviour
     void Start()
     {
         StartCoroutine(SwitchCam());
+        Screen.SetResolution(640, 480, FullScreenMode.Windowed);
     }
 
     // Update is called once per frame

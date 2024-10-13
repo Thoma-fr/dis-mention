@@ -15,6 +15,7 @@ public class TextIntro : MonoBehaviour
     void Start()
     {
         StartCoroutine(DisplayText());
+        Screen.SetResolution(640,480,FullScreenMode.Windowed);
     }
 
     // Update is called once per frame
