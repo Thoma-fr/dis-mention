@@ -495,6 +495,8 @@ MonoBehaviour:
   <Collectible>k__BackingField: 0
   _audioSource: {fileID: 642679415}
   _audioClipText: {fileID: 8300000, guid: a3ed2eb3ced97814a83a379e3f4ef64d, type: 3}
+  _audioCliptalkcute: {fileID: 8300000, guid: 17f7312766eebce418015354d194eda5, type: 3}
+  _audioCliptalkbold: {fileID: 8300000, guid: 13ef3f2d51907c749abfee7be01df0bb, type: 3}
 --- !u!4 &642679414
 Transform:
   m_ObjectHideFlags: 0
