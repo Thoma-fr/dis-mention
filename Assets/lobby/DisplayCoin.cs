@@ -15,6 +15,6 @@ public class DisplayCoin : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        m_TextMeshPro.text = "X" + GamaManager.instance.Collectible.ToString();
     }
 }

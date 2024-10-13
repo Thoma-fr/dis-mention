@@ -31,7 +31,8 @@ public class DialogueBox : MonoBehaviour
             yield return new WaitForSeconds(_textDuration);
             _playeribjectref.transform.DOShakeScale(.2f);
             transform.DOShakeScale(.2f);
-            GamaManager.instance.PlayTextSFX();
+            if(GamaManager.instance!=null)
+                GamaManager.instance.PlayTextSFX();
         }
         gameObject.SetActive(false);
         //SceneManager.LoadScene("Lobby1D");

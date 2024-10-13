@@ -32,4 +32,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/lobby/Lobby3D.unity
     guid: 8da82c24c94bacd4b874ed61142d3be6
+  - enabled: 1
+    path: Assets/lobby/Lobby1D.unity
+    guid: 046fa8e160a040d4c85baf5f7ab8304b
+  - enabled: 1
+    path: Assets/lobby/Lobby2.5D.unity
+    guid: ed0d2a32c7839eb43bd252267082e1a5
   m_configObjects: {}

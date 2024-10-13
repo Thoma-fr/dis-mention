@@ -4188,12 +4188,16 @@ PrefabInstance:
       value: Snake Head
       objectReference: {fileID: 0}
     - target: {fileID: 6790797011273887769, guid: 63f31b57cfc1e3f4a9fa7672552cfb9f, type: 3}
+      propertyPath: m_nextScene
+      value: Lobby2.5D
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790797011273887769, guid: 63f31b57cfc1e3f4a9fa7672552cfb9f, type: 3}
       propertyPath: m_tutorialEffect
       value: 
       objectReference: {fileID: 2010549896}
     - target: {fileID: 6790797011273887769, guid: 63f31b57cfc1e3f4a9fa7672552cfb9f, type: 3}
       propertyPath: m_collectableSpeedBoost
-      value: 0.6
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 7939132666262957181, guid: 63f31b57cfc1e3f4a9fa7672552cfb9f, type: 3}
       propertyPath: m_LocalPosition.x
