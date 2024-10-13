@@ -59,6 +59,12 @@ public class Snake : MonoBehaviour
     [SerializeField, Tooltip("Vitesse en plus apres collectable")]
     private float m_collectableSpeedBoost = 1f;
     // Start is called before the first frame update
+
+    [SerializeField, Header("Game Manager Valeur")]
+    private int m_scoreValue = 10;
+
+    [SerializeField]
+    private int m_collectibleValue = 10;
     void Start()
     {
         m_dir = transform.up;
@@ -212,7 +218,11 @@ public class Snake : MonoBehaviour
         if(collision.CompareTag("Collectable"))
         {
             //incremente score etc
-            if(GamaManager.instance != null) GamaManager.instance.Score += 10;
+            if (GamaManager.instance != null)
+            {
+                GamaManager.instance.Score += m_scoreValue;
+                GamaManager.instance.Collectible += m_collectibleValue;
+            }
             moveSpeed += m_collectableSpeedBoost;
             collision.gameObject.SetActive(false);
         }
