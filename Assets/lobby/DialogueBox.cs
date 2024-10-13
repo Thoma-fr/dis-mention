@@ -16,12 +16,6 @@ public class DialogueBox : MonoBehaviour
     {
         StartCoroutine(DisplayText());
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     IEnumerator DisplayText()
     {
         yield return new WaitForSeconds(1f);
@@ -29,12 +23,12 @@ public class DialogueBox : MonoBehaviour
         {
             _textMeshPro.text = _textlist[i];
             yield return new WaitForSeconds(_textDuration);
-            _playeribjectref.transform.DOShakeScale(.2f);
+            if(_playeribjectref != null)
+                _playeribjectref.transform.DOShakeScale(.2f);
             transform.DOShakeScale(.2f);
             if(GamaManager.instance!=null)
                 GamaManager.instance.PlayTextSFX();
         }
         gameObject.SetActive(false);
-        //SceneManager.LoadScene("Lobby1D");
     }
 }
