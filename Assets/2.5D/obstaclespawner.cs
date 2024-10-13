@@ -25,11 +25,16 @@ public class obstaclespawner : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(Random.Range(0.5f, Maxdelay));
-            if (count != 6)
-                Instantiate(_prefabs, transform.position,Quaternion.identity);
-            else
-                Instantiate(_collectibleprefabs, transform.position, Quaternion.identity);
+            if (count != 5)
+            {
+                Instantiate(_prefabs, transform.position, Quaternion.identity);
 
+            }
+            else
+            {
+                Instantiate(_collectibleprefabs, transform.position, Quaternion.identity);
+                count = 0;
+            }
             count++;
 
         }

@@ -10,6 +10,8 @@ public class TextIntro : MonoBehaviour
    [SerializeField] List<string> _textlist = new List<string>();
     [SerializeField] private TextMeshPro _textMeshPro;
     [SerializeField] private float _textDuration=5f;
+    [SerializeField] private AudioClip _audioClipText;
+    [SerializeField] private AudioSource _audioSource;
     void Start()
     {
         StartCoroutine(DisplayText());
@@ -26,7 +28,9 @@ public class TextIntro : MonoBehaviour
         for (int i = 0; i < _textlist.Count; i++)
         {
             _textMeshPro.text = _textlist[i];
+            _audioSource.PlayOneShot(_audioClipText);
             yield return new WaitForSeconds(_textDuration);
+
         }
         SceneManager.LoadScene("Lobby1D");
     }
