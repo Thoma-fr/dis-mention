@@ -42,6 +42,8 @@ public class Snake : MonoBehaviour
     [SerializeField]
     private Sprite m_bodySprite;
 
+    [SerializeField]
+    TutorialEffect m_tutorialEffect;
     public enum Movement
     {
         UP,
@@ -81,6 +83,15 @@ public class Snake : MonoBehaviour
         m_previousMovement = Movement.UP;
         m_snakeSprite = this.GetComponent<SpriteRenderer>();
         m_goalSize = GameObject.FindGameObjectsWithTag("Collectable").Length;
+        StartCoroutine(LaunchTutorial2D());
+    }
+
+    private IEnumerator LaunchTutorial2D()
+    {
+        m_stopPlaying = true;
+        m_tutorialEffect.LaunchTutorialEffect();
+        yield return new WaitForSeconds(5.8f);
+        m_stopPlaying = false;
     }
 
     // Update is called once per frame
