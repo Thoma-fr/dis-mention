@@ -369,6 +369,8 @@ MonoBehaviour:
   <Collectible>k__BackingField: 0
   _audioSource: {fileID: 0}
   _audioClipText: {fileID: 0}
+  _audioCliptalkcute: {fileID: 0}
+  _audioCliptalkbold: {fileID: 0}
 --- !u!4 &181128342
 Transform:
   m_ObjectHideFlags: 0
@@ -1089,7 +1091,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.13305447, g: 0.1766989, b: 0.24528301, a: 0}
+  m_BackGroundColor: {r: 0.0233624, g: 0.03954959, b: 0.066037714, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
