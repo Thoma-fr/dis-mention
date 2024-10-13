@@ -1,6 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
+using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -8,12 +11,21 @@ public class PixelManager : MonoBehaviour
 {
     public static PixelManager Instance;
 
+    [Header("Effect")] 
+    [SerializeField] private PixelEnterExit _pixelEffect;
+    [SerializeField] private GameObject _virtualCamera;
+    [SerializeField] private GameObject _hitCamera;
+    [SerializeField] private TextMeshProUGUI _coinText;
+    [SerializeField] private TextMeshPro _tutoText;
+    [SerializeField] private string _firstTuto;
+    [SerializeField] private string _secondTuto;
+
     [Header("Camera")] 
     [SerializeField] private Transform _firstCamPoint;
     [SerializeField] private Transform _secondCamPoint;
 
     [Header("Level")]
-    [SerializeField] private List<LevelData> levelList = new List<LevelData>();
+    [SerializeField] private List<LevelData> _levelList = new List<LevelData>();
     private int _levelId = 0;
     private Vector3 _firstPos = new Vector3(-5, 0, 0);
 
@@ -24,6 +36,7 @@ public class PixelManager : MonoBehaviour
     [Header("In Game")]
     private List<PixelBehaviour> _actualPixelUse = new List<PixelBehaviour>();
     private List<int> _pixelWallPos = new List<int>();
+    private int _coins = 0;
 
     private void Awake()
     {
@@ -31,21 +44,27 @@ public class PixelManager : MonoBehaviour
             Instance = this;
         else
             Destroy(gameObject);
+
+        _hitCamera.SetActive(false);
     }
 
     private void Start()
     {
+        _pixelEffect.EnterEffect();
+
         _pixelPrefab = Resources.Load<GameObject>("1D/Pixel");
 
         PixelPool pool = new PixelPool();
         _pixelPool = pool.CreatePool(_pixelPrefab, 100);
+
+        TutorialEffect();
 
         CreateLevel();
     }
 
     private void CreateLevel()
     {
-        LevelData levelData = levelList[_levelId];
+        LevelData levelData = _levelList[_levelId];
 
         if(levelData.maxSize < 0)
             return;
@@ -73,6 +92,7 @@ public class PixelManager : MonoBehaviour
             PixelBehaviour pixel = _pixelPool.Get();
             pixel.transform.position = _firstPos + new Vector3(specialPixelList[i].posIndex * 1, 0, 0);
             pixel.PixelPos = specialPixelList[i].posIndex;
+            pixel.MaxPixelPos = levelData.maxSize;
             pixel.UpdateBehaviour(specialPixelList[i].pixelState, GetPixelAction(specialPixelList[i].pixelState));
 
             if(specialPixelList[i].pixelState == PixelState.WALL)
@@ -90,6 +110,8 @@ public class PixelManager : MonoBehaviour
                 return ResetLevel;
             case PixelState.FINISH:
                 return NextLevel;
+            case PixelState.COIN:
+                return GetCoin;
         }
 
         return null;
@@ -111,26 +133,79 @@ public class PixelManager : MonoBehaviour
         _actualPixelUse.Clear();
     }
 
+    private void GetCoin()
+    {
+        _coins++;
+        _coinText.text = _coins.ToString();
+        _coinText.transform.DOShakePosition(0.5f, 5f);
+    }
+
     private void NextLevel()
     {
-        DestroyLevel();
         _levelId++;
 
-        if(_levelId >= levelList.Count)
+        if (_levelId >= _levelList.Count)
+        {
             FinishGame();
-        else
-            CreateLevel();
+            return;
+        }
+            
+        DestroyLevel();
+        CreateLevel();
     }
 
     private void ResetLevel()
     {
+        StartCoroutine(HitEffect());
         DestroyLevel();
         CreateLevel();
     }
 
     private void FinishGame()
     {
-        //TODO
+        _pixelEffect.ExitEffect(_firstPos + new Vector3(_levelList[_levelId - 1].maxSize * 1, 0, 0));
+    }
+
+    private IEnumerator HitEffect()
+    {
+        SwitchCam(true);
+        yield return new WaitForSeconds(0.5f);
+        SwitchCam(false);
+    }
+
+    public void SwitchCam(bool isHit)
+    {
+        _virtualCamera.SetActive(!isHit);
+        _hitCamera.SetActive(isHit);
+    }
+
+    private void TutorialEffect()
+    {
+        _tutoText.transform.localScale = new Vector3(1.3f, 1.3f, 1.3f);
+        _tutoText.text = _firstTuto;
+
+        Sequence mySequence = DOTween.Sequence();
+        mySequence.SetDelay(0.8f);
+        mySequence.Append(_tutoText.transform.DOScale(new Vector3(0.9f, 0.9f, 0.9f), 1.5f));
+        mySequence.OnComplete(() =>
+        {
+            _tutoText.gameObject.SetActive(false);
+
+            _tutoText.transform.localScale = new Vector3(1.3f, 1.3f, 1.3f);
+            _tutoText.text = _secondTuto;
+
+            mySequence = DOTween.Sequence();
+            mySequence.SetDelay(2f).OnComplete(() =>
+            {
+                _tutoText.gameObject.SetActive(true);
+
+                mySequence = DOTween.Sequence();
+                mySequence.Append(_tutoText.transform.DOScale(new Vector3(0.9f, 0.9f, 0.9f), 1.5f));
+                mySequence.OnComplete(() => _tutoText.gameObject.SetActive(false));
+            });
+        });
+
+
     }
 }
 
@@ -140,7 +215,8 @@ public enum PixelState
     PLAYER,
     WALL,
     ENEMY,
-    FINISH
+    FINISH,
+    COIN
 }
 
 [Serializable]
