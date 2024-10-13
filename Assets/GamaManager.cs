@@ -8,6 +8,8 @@ public class GamaManager : MonoBehaviour
     [field:SerializeField] public int DimensionIndex {  get; set; }
     [field: SerializeField] public int Score { get; set; }
     [field: SerializeField] public int Collectible { get; set; }
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioClip _audioClipText;
     public static GamaManager instance;
     void Awake()
     {
@@ -15,8 +17,12 @@ public class GamaManager : MonoBehaviour
             instance = this;
         else
             Destroy(instance);
+        DontDestroyOnLoad(gameObject);
     }
-
+    public void PlayTextSFX()
+    {
+        _audioSource.PlayOneShot(_audioClipText);
+    }
     // Update is called once per frame
     void Update()
     {

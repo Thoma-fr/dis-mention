@@ -8,8 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: M_VHSFilter
-  m_Shader: {fileID: -6465566751694194690, guid: f4327db72e96be54cae2b8a34d57a1c0,
-    type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: f4327db72e96be54cae2b8a34d57a1c0, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -38,12 +37,15 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _PixelSize: 8
     - _PowerGlitch: 1
     - _PowerWhitePico: 1000
     - _ScanLine: 20
     - _Speed: 2
-    - _WithBar: 0
-    - _WithColorBar: 0
-    - _WithNoise: 0
+    - _WithBar: 1
+    - _WithColorBar: 1
+    - _WithNoise: 1
+    - _WithPixelisation: 1
+    - _WithVHS: 1
     m_Colors: []
   m_BuildTextureStacks: []
