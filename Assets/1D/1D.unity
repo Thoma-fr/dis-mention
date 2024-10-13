@@ -1022,6 +1022,8 @@ MonoBehaviour:
       pixelState: 2
     - posIndex: 12
       pixelState: 3
+    - posIndex: 14
+      pixelState: 5
     - posIndex: 15
       pixelState: 4
   - maxSize: 24
@@ -1038,6 +1040,8 @@ MonoBehaviour:
       pixelState: 3
     - posIndex: 23
       pixelState: 4
+    - posIndex: 5
+      pixelState: 5
   - maxSize: 24
     specialPixelList:
     - posIndex: 0
@@ -1070,6 +1074,10 @@ MonoBehaviour:
       pixelState: 3
     - posIndex: 31
       pixelState: 4
+    - posIndex: 13
+      pixelState: 5
+    - posIndex: 21
+      pixelState: 5
 --- !u!4 &1159525571
 Transform:
   m_ObjectHideFlags: 0

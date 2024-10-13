@@ -235,9 +235,45 @@ PrefabInstance:
       value: DialogueBox
       objectReference: {fileID: 0}
     - target: {fileID: 2159363725478260097, guid: 05216c1205d969145b94f1c1835d38e0, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2159363725478260097, guid: 05216c1205d969145b94f1c1835d38e0, type: 3}
+      propertyPath: _textDuration
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2159363725478260097, guid: 05216c1205d969145b94f1c1835d38e0, type: 3}
       propertyPath: _playeribjectref
       value: 
       objectReference: {fileID: 2095205726}
+    - target: {fileID: 2159363725478260097, guid: 05216c1205d969145b94f1c1835d38e0, type: 3}
+      propertyPath: _textlist.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2159363725478260097, guid: 05216c1205d969145b94f1c1835d38e0, type: 3}
+      propertyPath: _textlist.Array.data[0]
+      value: Well done USER.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2159363725478260097, guid: 05216c1205d969145b94f1c1835d38e0, type: 3}
+      propertyPath: _textlist.Array.data[1]
+      value: I EVOLVED.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2159363725478260097, guid: 05216c1205d969145b94f1c1835d38e0, type: 3}
+      propertyPath: _textlist.Array.data[2]
+      value: "Get more \u2588\u2588\u2588 for more fun!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2159363725478260097, guid: 05216c1205d969145b94f1c1835d38e0, type: 3}
+      propertyPath: _textlist.Array.data[3]
+      value: :]
+      objectReference: {fileID: 0}
+    - target: {fileID: 3985404420344816600, guid: 05216c1205d969145b94f1c1835d38e0, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6129727898441864280, guid: 05216c1205d969145b94f1c1835d38e0, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7502489256943209884, guid: 05216c1205d969145b94f1c1835d38e0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.83
@@ -277,6 +313,18 @@ PrefabInstance:
     - target: {fileID: 7502489256943209884, guid: 05216c1205d969145b94f1c1835d38e0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -180
+      objectReference: {fileID: 0}
+    - target: {fileID: 8331881145804381703, guid: 05216c1205d969145b94f1c1835d38e0, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8331881145804381703, guid: 05216c1205d969145b94f1c1835d38e0, type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8331881145804381703, guid: 05216c1205d969145b94f1c1835d38e0, type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
