@@ -1,7 +1,9 @@
+using Cinemachine;
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Searcher.SearcherWindow.Alignment;
+using UnityEngine.Rendering;
 
 public class Character25Dmove : MonoBehaviour
 {
@@ -13,6 +15,10 @@ public class Character25Dmove : MonoBehaviour
     [SerializeField] private LifeCounter _lifeCounter;
     // Start is called before the first frame update
     [SerializeField] private bool _aiRight,_aiLeft;
+    private bool _lookAtPlayer;
+    [SerializeField] private GameObject _camref;
+    [SerializeField] private Collider _col;
+    [SerializeField] private Volume _volumeref;
     void Start()
     {
         StartCoroutine(looseControl());
@@ -36,12 +42,24 @@ public class Character25Dmove : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        _lifeCounter.removeOneLife();
+        if (!other.CompareTag("Collectable"))
+            _lifeCounter.removeOneLife();
+        else
+        {
+            if (GamaManager.instance != null)
+                GamaManager.instance.Collectible++;
+        }
     }
     IEnumerator looseControl()
     {
-        yield return new WaitForSeconds(1f);
-        while(true)
+        yield return new WaitForSeconds(20f);
+        DOTween.To(() => _camref.GetComponent<CinemachineVirtualCamera>().m_Lens.FieldOfView, x => _camref.GetComponent<CinemachineVirtualCamera>().m_Lens.FieldOfView = x, 20, 60);
+        yield return new WaitForSeconds(20f);
+        _camref.SetActive(false);
+        _col.enabled = false;
+        StartCoroutine(lookatplayerTimer());
+        //DOTween.To(() => _camref.GetComponent<CinemachineVirtualCamera>().m_Lens.FieldOfView, x => _camref.GetComponent<CinemachineVirtualCamera>().m_Lens.FieldOfView=x, 10, 8);
+        while (!_lookAtPlayer)
         {
             _aiRight = true;
             _aiLeft=false;
@@ -51,5 +69,15 @@ public class Character25Dmove : MonoBehaviour
             yield return new WaitForSeconds(Random.Range(0.5f, 3f));
         }
 
+    }
+    IEnumerator lookatplayerTimer()
+    {
+        DOTween.To(() => _volumeref.weight, x => _volumeref.weight = x, 1, 10f);
+
+      yield return new WaitForSeconds(5f);
+
+        _lookAtPlayer = true;
+        //transform.LookAt(_camref.transform);
+        //transform.Rotate(0, 180, 0);
     }
 }
