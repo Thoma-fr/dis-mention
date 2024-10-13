@@ -27,9 +27,9 @@ public class Character25Dmove : MonoBehaviour
     private void FixedUpdate()
     {
         Vector3 direction=Vector3.zero;
-        if(Input.GetKey(KeyCode.Q)||_aiRight)
+        if(Input.GetKey(KeyCode.LeftArrow)||_aiRight)
                 direction = ((new Vector3(0,0, 1).normalized * _speed) * Time.deltaTime);
-        else if(Input.GetKey(KeyCode.D)||_aiLeft)
+        else if(Input.GetKey(KeyCode.RightArrow) ||_aiLeft)
                     direction = ((new Vector3(0, 0, -1).normalized * _speed) * Time.deltaTime);
         else
              direction = Vector3.zero;

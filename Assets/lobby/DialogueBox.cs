@@ -11,7 +11,7 @@ public class DialogueBox : MonoBehaviour
     [SerializeField] private TextMeshPro _textMeshPro;
     [SerializeField] private float _textDuration = 2f;
     [SerializeField] private GameObject _playeribjectref;
-    
+    [SerializeField] private bool _isbig;
     void Start()
     {
         StartCoroutine(DisplayText());
@@ -26,8 +26,16 @@ public class DialogueBox : MonoBehaviour
             if(_playeribjectref != null)
                 _playeribjectref.transform.DOShakeScale(.2f);
             transform.DOShakeScale(.2f);
-            if(GamaManager.instance!=null)
+            if (GamaManager.instance != null)
+            {
                 GamaManager.instance.PlayTextSFX();
+                if (!_isbig)
+                {
+                    GamaManager.instance.PlayTalkcute();
+                }
+                else
+                    GamaManager.instance.PlayTalkbold();
+            }
         }
         gameObject.SetActive(false);
     }

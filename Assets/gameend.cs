@@ -8,6 +8,7 @@ public class gameend : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GamaManager.instance.StopAudio();
         Screen.SetResolution(640, 480, FullScreenMode.Windowed);
         effect.LaunchTutorialEffect();
         StartCoroutine(TimeLine());
