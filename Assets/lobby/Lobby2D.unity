@@ -1215,7 +1215,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playButton: {fileID: 2076111448}
-  _sceneNames: []
 --- !u!114 &2076111448
 MonoBehaviour:
   m_ObjectHideFlags: 0
