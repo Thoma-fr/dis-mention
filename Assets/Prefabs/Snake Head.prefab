@@ -196,6 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09fac756f910ac94386003766858fc23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_nextScene: Lobby3D
   moveSpeed: 2
   m_dir: {x: 0, y: 0, z: 0}
   distanceMovement: 1
@@ -221,8 +222,11 @@ MonoBehaviour:
   m_bodySprite: {fileID: 0}
   m_actualMovement: 0
   m_previousMovement: 0
-  m_isDead: 0
+  m_stopPlaying: 0
   m_collectableSpeedBoost: 0.6
+  m_scoreValue: 10
+  m_collectableValue: 10
+  m_goalSize: 1
 --- !u!61 &3616704795855415090
 BoxCollider2D:
   m_ObjectHideFlags: 0

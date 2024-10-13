@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class Snake : MonoBehaviour
 {
+    [Header("WIN NEXT SCENE LOAD"), SerializeField]
+    private string m_nextScene;
     [Header("Mouvement")]
     [SerializeField, Tooltip("Temps entre chaque mouvement")]
     private float moveSpeed = 2f;
@@ -54,17 +56,21 @@ public class Snake : MonoBehaviour
     [SerializeField]
     private Movement m_previousMovement;
     [SerializeField, Tooltip("mort du snake")]
-    private bool m_isDead;
+    private bool m_stopPlaying;
 
+    [Header("Collectible")]
     [SerializeField, Tooltip("Vitesse en plus apres collectable")]
     private float m_collectableSpeedBoost = 1f;
     // Start is called before the first frame update
 
-    [SerializeField, Header("Game Manager Valeur")]
+    [SerializeField]
     private int m_scoreValue = 10;
 
     [SerializeField]
-    private int m_collectibleValue = 10;
+    private int m_collectableValue = 10;
+
+    [SerializeField]
+    private int m_goalSize = 1;
     void Start()
     {
         m_dir = transform.up;
@@ -74,12 +80,13 @@ public class Snake : MonoBehaviour
         m_actualMovement = Movement.UP;
         m_previousMovement = Movement.UP;
         m_snakeSprite = this.GetComponent<SpriteRenderer>();
+        m_goalSize = GameObject.FindGameObjectsWithTag("Collectable").Length;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (m_isDead) return;
+        if (m_stopPlaying) return;
         //input
         if(Input.GetKeyDown(KeyCode.LeftArrow))
         {
@@ -221,16 +228,25 @@ public class Snake : MonoBehaviour
             if (GamaManager.instance != null)
             {
                 GamaManager.instance.Score += m_scoreValue;
-                GamaManager.instance.Collectible += m_collectibleValue;
+                GamaManager.instance.Collectible += m_collectableValue;
             }
             moveSpeed += m_collectableSpeedBoost;
             collision.gameObject.SetActive(false);
+            m_goalSize--;
+            if (m_goalSize <= 0) StartCoroutine(WinSnake());
         }
         //mort
         if (!collision.CompareTag("2DWall")) return;
-        m_isDead = true;
+        m_stopPlaying = true;
         Debug.Log("GAME OVER");
         StartCoroutine(RechargeLevel());
+    }
+
+    private IEnumerator WinSnake()
+    {
+        m_stopPlaying = true;
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadScene(m_nextScene);
     }
 
     private IEnumerator RechargeLevel()
