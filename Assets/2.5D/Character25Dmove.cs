@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 
 public class Character25Dmove : MonoBehaviour
 {
@@ -48,6 +49,7 @@ public class Character25Dmove : MonoBehaviour
         {
             if (GamaManager.instance != null)
                 GamaManager.instance.Collectible++;
+            Destroy(other.gameObject);
         }
     }
     IEnumerator looseControl()
@@ -55,7 +57,7 @@ public class Character25Dmove : MonoBehaviour
         yield return new WaitForSeconds(20f);
         DOTween.To(() => _camref.GetComponent<CinemachineVirtualCamera>().m_Lens.FieldOfView, x => _camref.GetComponent<CinemachineVirtualCamera>().m_Lens.FieldOfView = x, 20, 60);
         yield return new WaitForSeconds(20f);
-        _camref.SetActive(false);
+        
         _col.enabled = false;
         StartCoroutine(lookatplayerTimer());
         //DOTween.To(() => _camref.GetComponent<CinemachineVirtualCamera>().m_Lens.FieldOfView, x => _camref.GetComponent<CinemachineVirtualCamera>().m_Lens.FieldOfView=x, 10, 8);
@@ -68,13 +70,15 @@ public class Character25Dmove : MonoBehaviour
             _aiLeft = true;
             yield return new WaitForSeconds(Random.Range(0.5f, 3f));
         }
-
+        _camref.SetActive(false);
+        yield return new WaitForSeconds(5f);
+        SceneManager.LoadScene("Lobby3D");
     }
     IEnumerator lookatplayerTimer()
     {
         DOTween.To(() => _volumeref.weight, x => _volumeref.weight = x, 1, 10f);
 
-      yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(5f);
 
         _lookAtPlayer = true;
         //transform.LookAt(_camref.transform);
