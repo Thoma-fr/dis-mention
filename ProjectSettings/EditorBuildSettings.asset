@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/3D/3D.unity
     guid: cc6ead20aca960f43a318464831288f5
+  - enabled: 1
+    path: Assets/lobby/Lobby3D.unity
+    guid: 8da82c24c94bacd4b874ed61142d3be6
   m_configObjects: {}

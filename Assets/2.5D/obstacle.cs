@@ -10,6 +10,7 @@ public class obstacle : MonoBehaviour
     void Start()
     {
         _speed = Random.Range(300, 500);
+        Destroy(gameObject,30);
     }
 
     // Update is called once per frame

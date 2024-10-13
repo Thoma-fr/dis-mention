@@ -13,6 +13,7 @@ public class PixelBehaviour : MonoBehaviour
 
     [Header("Behaviour")]
     private PixelState _pixelState;
+    public PixelState PixelState => _pixelState;
     [SerializeField] private List<PixelColor> pixelColors = new List<PixelColor>();
     private Action OntriggerEnterAction;
 
@@ -21,6 +22,7 @@ public class PixelBehaviour : MonoBehaviour
     private int _maxPixelPos;
     public int PixelPos { set => _pixelPos = value;}
     public int MaxPixelPos { set => _maxPixelPos = value;}
+
 
     [Header("Enemy")] 
     private float _timer = 0;
@@ -108,6 +110,9 @@ public class PixelBehaviour : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(_pixelState == PixelState.ENEMY && PixelManager.Instance.IsThereWall(_pixelPos))
+            return;
+
+        if(_pixelState == PixelState.ENEMY && collision.GetComponent<PixelBehaviour>().PixelState == PixelState.COIN || _pixelState == PixelState.COIN && collision.GetComponent<PixelBehaviour>().PixelState == PixelState.ENEMY)
             return;
 
         if(OntriggerEnterAction != null)
