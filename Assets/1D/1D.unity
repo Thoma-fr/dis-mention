@@ -1010,6 +1010,8 @@ MonoBehaviour:
       pixelState: 1
     - posIndex: 7
       pixelState: 2
+    - posIndex: 16
+      pixelState: 2
     - posIndex: 21
       pixelState: 3
     - posIndex: 24
