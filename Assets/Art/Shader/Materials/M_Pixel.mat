@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_VHSFilter
-  m_Shader: {fileID: -6465566751694194690, guid: f4327db72e96be54cae2b8a34d57a1c0, type: 3}
+  m_Name: M_Pixel
+  m_Shader: {fileID: -6465566751694194690, guid: a340a087ac6ce904b82bf8295144ee13, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -37,15 +37,20 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _PixelSize: 8
-    - _PowerGlitch: 1
-    - _PowerWhitePico: 1000
-    - _ScanLine: 20
-    - _Speed: 2
-    - _WithBar: 1
-    - _WithColorBar: 1
-    - _WithNoise: 1
-    - _WithPixelisation: 1
-    - _WithVHS: 1
+    - _DecalMeshBiasType: 0
+    - _DecalMeshDepthBias: 0
+    - _DecalMeshViewBias: 0
+    - _DrawOrder: 0
+    - _Fullscreen_AlphaBlendOperation: 0
+    - _Fullscreen_BlendMode: 0
+    - _Fullscreen_ColorBlendOperation: 0
+    - _Fullscreen_DepthWrite: 0
+    - _Fullscreen_DstAlphaBlend: 10
+    - _Fullscreen_DstColorBlend: 10
+    - _Fullscreen_SrcAlphaBlend: 1
+    - _Fullscreen_SrcColorBlend: 5
+    - _PixelSize: 16
+    - _QueueControl: 0
+    - _QueueOffset: 0
     m_Colors: []
   m_BuildTextureStacks: []

@@ -18,7 +18,9 @@ public class PixelBehaviour : MonoBehaviour
 
     [Header("Data")]
     private int _pixelPos; 
+    private int _maxPixelPos;
     public int PixelPos { set => _pixelPos = value;}
+    public int MaxPixelPos { set => _maxPixelPos = value;}
 
     [Header("Enemy")] 
     private float _timer = 0;
@@ -32,19 +34,22 @@ public class PixelBehaviour : MonoBehaviour
         if (_pixelState == PixelState.ENEMY)
         {
             _timer += Time.deltaTime;
-            if (_timer >= _cooldown)
+            if (_timer >= _cooldown && _pixelPos > 0)
             {
                 _timer = 0;
                 _rb2D.MovePosition(new Vector3(transform.position.x - 1, 0, 0));
                 _pixelPos--;
+
+                if (_pixelPos == 0)
+                    _b2D.enabled = false;
             }
         }
 
         if (_pixelState == PixelState.PLAYER)
         {
-            if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.A))
-                PlayerMovement(-1);
-            else if (Input.GetKeyDown(KeyCode.D))
+            //if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.A))
+            //    PlayerMovement(-1);
+            if (Input.GetKeyDown(KeyCode.D))
                 PlayerMovement(1);
             else if (Input.GetKeyDown(KeyCode.Space))
                 PlayerMovement(2);
@@ -55,7 +60,10 @@ public class PixelBehaviour : MonoBehaviour
     {
         if (PixelManager.Instance.IsThereWall(_pixelPos + nextPos) || _pixelPos + nextPos < 0)
             return;
-            
+
+        if (_pixelPos + nextPos >= _maxPixelPos)
+            nextPos--;
+
         _rb2D.MovePosition(new Vector3(transform.position.x + nextPos, 0, 0));
         _pixelPos += nextPos;
     }
@@ -82,6 +90,9 @@ public class PixelBehaviour : MonoBehaviour
             case PixelState.FINISH:
                 NewBehaviour(1, true);
                 break;
+            case PixelState.COIN:
+                NewBehaviour(1, true);
+                break;
         }
     }
 
@@ -101,6 +112,9 @@ public class PixelBehaviour : MonoBehaviour
 
         if(OntriggerEnterAction != null)
             OntriggerEnterAction.Invoke();
+
+        if(_pixelState == PixelState.COIN)
+            gameObject.SetActive(false);
     }
 
     private Color GetColor()
