@@ -8,4 +8,25 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/lobby/Lobby2D.unity
+    guid: f6f04bdd6b866ee4cb628cc4b5a8c06d
+  - enabled: 1
+    path: Assets/0D/0DIntroScene.unity
+    guid: ec74190c47789e84392a32925c9d93b7
+  - enabled: 1
+    path: Assets/0D/0Dpt2.unity
+    guid: 4f05ab948ed3f1149bc58096646e0ad1
+  - enabled: 1
+    path: Assets/1D/1D.unity
+    guid: dcaa8055afb350040b5105854157adb2
+  - enabled: 1
+    path: Assets/2.5D/2.5D.unity
+    guid: 4e1bd8b87a9be7242b568f8c428d6d9d
+  - enabled: 1
+    path: Assets/2D/Snake Mouvement 2D.unity
+    guid: 173373892c52a6b458b4955e1b85dc86
+  - enabled: 1
+    path: Assets/3D/3D.unity
+    guid: cc6ead20aca960f43a318464831288f5
   m_configObjects: {}
