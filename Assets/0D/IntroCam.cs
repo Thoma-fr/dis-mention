@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class IntroCam : MonoBehaviour
 {
@@ -20,5 +22,8 @@ public class IntroCam : MonoBehaviour
     {
         yield return new WaitForSeconds(30f);
         cam1.SetActive(false);
+        yield return new WaitForSeconds(15f);
+        Debug.Log("change");
+        SceneManager.LoadScene("0Dpt2");
     }
 }
